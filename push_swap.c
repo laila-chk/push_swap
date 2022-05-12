@@ -6,14 +6,14 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:30:55 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/12 15:26:52 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/12 15:29:26 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-
+/*here's a sad story: we may have args iin the form of "1 2 3" 7 3 4 "90 76 55" "" and we have to handle "" and ret an err*/
 int main(int c, char **v)
 {
 	char	**p;
