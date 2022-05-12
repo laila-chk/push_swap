@@ -93,9 +93,9 @@ char	**ft_split(char const *s, char c)
 {
 	int		j;
 	char	**p;
-	int		*jj;
+//	int		*jj;
 
-	jj = &j;
+//	jj = &j;
 	if (!s)
 		return (NULL);
 	p = (char **)ft_calloc((wordcount(s, c) + 1), sizeof(char *));
