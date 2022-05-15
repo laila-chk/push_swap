@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   check_valid_args.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 11:30:55 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/14 21:16:00 by lchokri          ###   ########.fr       */
+/*   Created: 2022/05/14 19:52:10 by lchokri           #+#    #+#             */
+/*   Updated: 2022/05/14 21:15:48 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int main(int c, char **v)
+//return # of #s
+
+check_type
+
+int strlen(char *s)
 {
-	char	*joined_args;
+	int i;
 
-	if (c < 2)
-		write(2, "Error: too few arguments!\n", 27);
-	else 
+	i = 0;
+	while (s[i++]);
+	return (--i);
+}
+
+int	check_valid_args(char *all_args)
+{
+	char	**arg;
+	int		i;
+
+	i = 0;
+	arg = ft_split(all_args, ' ');	
+	while (arg[i])
 	{
-			join_all_args(&joined_args, v, c);
-			printf("%s\n", joined_args);
-			check_valid_args(joined_args);
-			free(joined_args);
+		//iwa cheki hna 3la kola el bohdo o stori zmar smw
+		free(arg[i]);
+		i++;
 	}
+	free(arg);
+	return (i);
 }
