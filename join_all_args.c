@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 10:19:15 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/14 19:44:32 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/15 13:13:08 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	join_all_args(char **joined_args, char **v, int c)
 	(*joined_args)[j + 1] = '\0';
 	while (i < c)
 	{
-		*joined_args = ft_strjoin(*joined_args, v[i]);
+		*joined_args = ft_strjoin(*joined_args, v[i]); // we need to free the old joined_args,point t it and free after use
 		check_empty_arg(i, c, joined_args, v);
 		i++;
 	}
