@@ -45,12 +45,12 @@ int	check_type(char **str)
 	res = 0;
 	while ((*str)[i] <= 13 && (*str)[i] >= 9)
 		i++;
-	if ((*str)[i] == '-' || (*str)[i] == '+')
+	if ((*str)[i] == '-')
 	{
-		if ((*str)[i] == '-')
-			sign *= -1;
+		sign *= -1;
 		i++;
 	}
-	check_if_valid(str, i, &res);
+	if ((*str)[i] <= '9' && (*str)[i] >= '0')
+		check_if_valid(str, i, &res);
 	return (sign * res);
 }
