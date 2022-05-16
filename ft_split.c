@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:06:56 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/14 19:19:31 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/16 19:50:54 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,15 @@ static char	**retptr(const char *s, char c, int *j, char **p)
 	return (p);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c, int *i)
 {
 	int		j;
 	char	**p;
-//	int		*jj;
 
-//	jj = &j;
 	if (!s)
 		return (NULL);
-	p = (char **)ft_calloc((wordcount(s, c) + 1), sizeof(char *));
+	*i = wordcount(s, c);
+	p = (char **)ft_calloc((*i + 1), sizeof(char *));
 	if (!p)
 		return (NULL);
 	j = -1;

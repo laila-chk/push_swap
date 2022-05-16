@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 20:23:38 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/15 13:13:13 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/16 18:12:09 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,45 @@
 
 // ila bghina nkharjoha khsna nreturniw res, man exitiwchi ila jbarna 7arf hit khsna nfreeyiw lowl li splitina
 
-void	check_if_valid(char **str, int i, unsigned long *res)
+void	check_if_valid(char **str, int i,int j, unsigned long *res, int *a)
 {
-	while ((*str)[i])
+	while ((str)[i][j])
 	{
-		if ((*str)[i] <= '9' && (*str)[i] >= '0')
+		if ((str)[i][j] <= '9' && (str)[i][j] >= '0')
 			{
-				*res = *res * 10 + (*str)[i] - '0';
-				i++;
+				*res = *res * 10 + (str)[i][j] - '0';
+				j++;
 			}
 		else
 		{
 			write(2, "Error: argument not a nunmber!", 30);
 			free((str)[i]);
 			free(str);
-			system("leaks a.out");
+			free(a);
+			//system("leaks a.out");
 			exit(EXIT_FAILURE);
 		}
 	}
 }
 
-int	check_type(char **str)
+int	check_type(char **str, int i, int *a)
 {
-	int				i;
+	int				j;
 	long			sign;
 	unsigned long	res;
 
-	i = 0;
+	j = 0;
 	sign = 1;
 	res = 0;
-	while ((*str)[i] <= 13 && (*str)[i] >= 9)
-		i++;
-	if ((*str)[i] == '-')
+	while ((str)[i][j] <= 13 && (str)[i][j] >= 9)
+		j++;
+	if ((str)[i][j] == '-')
 	{
 		sign *= -1;
-		i++;
+		j++;
 	}
-	if ((*str)[i] <= '9' && (*str)[i] >= '0')
-		check_if_valid(str, i, &res);
+//	if ((str)[i][j] <= '9' && (str)[i][j] >= '0')
+		check_if_valid(str, i, j, &res, a);
+//	printf("&&%lu&&\n",sign*res);
 	return (sign * res);
 }

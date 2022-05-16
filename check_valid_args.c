@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:52:10 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/15 13:05:12 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/16 19:38:53 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,21 @@
 //return # of #s
 
 
-int	check_valid_args(char *all_args)
+int	check_valid_args(char *all_args, int **a)
 {
 	char	**arg;
 	int		i;
+	int		j;
 
 	i = 0;
-	arg = ft_split(all_args, ' ');	
+	j = 0;
+	arg = ft_split(all_args, ' ', &j);	
+	*a = ft_calloc(j , sizeof(int) + 1);
 	while (arg[i])
 	{
-		check_type(arg);
-		//iwa cheki hna 3la kola el bohdo o stori zmar smw
+		(*a)[i] = check_type(arg, i, *a);
 		free(arg[i]);
 		i++;
-	}
-	while (1)
-	{
-		system("leaks a.out");
-		exit(0);
 	}
 	free(arg);
 	return (i);
