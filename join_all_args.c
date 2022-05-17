@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 10:19:15 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/16 19:11:50 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/17 16:45:34 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	check_empty_arg(int i, int c, char **p, char **v)
 
 void	join_all_args(char **joined_args, char **v, int c)
 {
-	int	i;
-	int	j;
-	char **p;
+	int		i;
+	int		j;
+	char	*p;
 
 	i = 2;
 	j = 0;
@@ -57,10 +57,10 @@ void	join_all_args(char **joined_args, char **v, int c)
 	(*joined_args)[j + 1] = '\0';
 	while (i < c)
 	{
-		p = joined_args;
-		*joined_args = ft_strjoin(*joined_args, v[i]); // we need to free the old joined_args,point t it and free after use
-		//:free(p);
+		p = *joined_args;
+		*joined_args = ft_strjoin(*joined_args, v[i]); 
 		check_empty_arg(i, c, joined_args, v);
 		i++;
+		free(p);
 	}
 }

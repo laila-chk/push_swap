@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_args.c                                 :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/14 19:52:10 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/17 16:45:51 by lchokri          ###   ########.fr       */
+/*   Created: 2022/05/17 17:01:37 by lchokri           #+#    #+#             */
+/*   Updated: 2022/05/17 18:20:01 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//return # of #s
-
-
-int	check_valid_args(char *all_args, int **a)
+void	ft_swap(int *i)
 {
-	char	**arg;
-	int		i;
-	int		j;
+	int k;
+	k = i[0];
+	i[0] = i[1];
+	i[1] = k;
+}
 
-	i = 0;
-	j = 0;
-	arg = ft_split(all_args, ' ', &j);
-	*a = ft_calloc(j , sizeof(int));
-	while (arg[i])
+void ft_push(int *i, int *j, t_vars sz)
+{
+	int		k;
+
+	k = sz.size;
+	while (k > 0)
 	{
-		(*a)[i] = check_type(arg, i, *a);
-		free(arg[i]);
-		i++;
+		j[k] = j[k - 1];
+		k--;
 	}
-	free(arg);
-	free (all_args);
-	return (--i);
+	void(*i);
 }
