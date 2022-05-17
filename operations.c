@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:01:37 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/17 18:20:01 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/17 20:47:59 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,31 @@ void	ft_swap(int *i)
 	i[1] = k;
 }
 
-void ft_push(int *i, int *j, t_vars sz)
+void ft_push(int *i, int *j, int *len) //len is either b_len or a_len, depends on pa or pb, and what strc el we pass
 {
-	int		k;
+	int k;
 
-	k = sz.size;
+	k = *len;
 	while (k > 0)
 	{
 		j[k] = j[k - 1];
 		k--;
 	}
-	void(*i);
+	j[0] = i[0];
+	(*len)++;
+}
+
+void	rotate(int *i, int len)
+{
+	int		j;
+	int		k;
+
+	j = 0;
+	k = i[0];
+	while(j < len)
+	{
+		i[j] = i[j + 1];
+		j++;
+	}
+	i[len - 1] = k;
 }

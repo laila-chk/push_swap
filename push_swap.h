@@ -6,9 +6,10 @@
 #include <string.h>
 #include <stdio.h>
 
-struct s_vars
+typedef struct s_vars
 {
-	int size;
+	int a_len;
+	int	b_len;
 }	t_vars;
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -17,9 +18,11 @@ char	**ft_split(char const *s, char c, int *i);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *s);
 void	join_all_args(char **joined_args, char **v, int c);
-int	check_type(char **str, int i, int *a);
-int	check_valid_args(char *all_args, int **a);
-void	ft_push(int *i, int *j, t_vars sz);
+int		check_type(char **str, int i, int *a);
+int		check_valid_args(char *all_args, int **a);
+void	ft_push(int *i, int *j, int *len);
+void	rotate(int *i, int len);
+void	ft_swap(int *i);
 
 
 #endif
