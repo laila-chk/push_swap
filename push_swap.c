@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:30:55 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/18 14:02:27 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/19 00:39:24 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,27 @@ int main(int c, char **v)
 	char	*joined_args;
 	int		*a;
 	t_vars	sz;
-//	int		i; // i here is the # of #'s we have in total
-
-	// bro i don't want to allocate to b too.. i may just declare and use it in another func that takess that I
-	// and use it in the declaration like : int b[i]
-//	i = 0;
+	
 	a  = NULL;
-	if (c > 2)
+	if (c > 1)
 	{
 		join_all_args(&joined_args, v, c);
-	 sz.a_len  = check_valid_args(joined_args, &a);
-	sz.b_len = 4;
-	}
+		sz.a_len  = check_valid_args(joined_args, &a);
+		//if (sz.a_len == 1)
+			//one number msorti mn 3and lah
+		if (sz.a_len > 1 && sz.a_len <= 3)
+		{
+			sort_three(a, sz.a_len);
+		}
 	/*while (1)
 	{
 			system("leaks a.out");
 			exit(1);
 	}*/
-		int arr[] = {8};
-//	rotate(arr, 4);
-//	ft_push(a, arr, &sz.b_len);
-	sa(arr, 1);
-	printf("arr[0] = %d\n", arr[0]);
-//	printf("arr[1] = %d\n", arr[1]);
-//	printf("arr[2] = %d\n", arr[2]);
-//	printf("arr[3] = %d\n", arr[3]);
-//	printf("arr[4444] = %d\n", arr[4]);
-	printf(" %d\n", sz.b_len);
+	}
+	printf("%d %d %d \n", a[0], a[1], a[2]);
 }
+/* THE THING IS!!! if i'll compare while sorting i have to save the instructions
+ * in an arr and print them only when my stack is fully stored, otherwise we'll
+ * print the shity instrutioons that happened berfore we detect the doubled number ..
+ **/

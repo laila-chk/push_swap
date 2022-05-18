@@ -20,9 +20,14 @@ size_t	ft_strlen(const char *s);
 void	join_all_args(char **joined_args, char **v, int c);
 int		check_type(char **str, int i, int *a);
 int		check_valid_args(char *all_args, int **a);
-void	ft_push(int *i, int *j, int *len);
-void	rotate(int *i, int len);
-void	ft_swap(int *i, int len);
-void	sa(int *i, int len);
+void	pa(int *a, int *b, int *a_len, int b_len);
+void	pb(int *b, int *a, int *b_len, int a_len);
+void	sa(int *a, int a_len);
+void	sb(int *b, int b_len);
+void	ra(int *a, int a_len);
+void	rb(int *b, int b_len);
+void	rra(int *a, int a_len);
+void	rrb(int *b, int b_len);
+void	sort_three(int *a, int a_len);
 
 #endif

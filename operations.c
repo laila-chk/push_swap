@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:01:37 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/18 14:04:48 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/19 00:39:28 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ void	ft_swap(int *i, int len)
 	k = i[0];
 	if (len > 1)
 	{
-		printf("sldf");
 		i[0] = i[1];
 		i[1] = k;
 	}
 }
 
-void ft_push(int *i, int *j, int *len) //len is either b_len or a_len, depends on pa or pb, and what strc el we pass
+void ft_push(int *i, int *j, int *len) 
 {
 	int k;
 
@@ -38,18 +37,34 @@ void ft_push(int *i, int *j, int *len) //len is either b_len or a_len, depends o
 	(*len)++;
 }
 
-int	rotate(int *i, int len)
+void	rotate(int *i, int len)
 {
 	int		j;
 	int		k;
 
 	j = 0;
 	k = i[0];
-	while(j < len/* and len > 1*/)
+	while(j < len)
+	{
 		i[j] = i[j + 1];
 		j++;
 	}
 	i[len - 1] = k;
+}
+
+void	reverse_rotate(int *i, int len)
+{
+	int	j;
+	int	k;
+
+	j = 1;
+	k = i[len - 1];
+	while (j < len)
+	{
+		i[len - j] = i[len - j - 1];
+		j++;
+	}
+	i[0] = k;
 }
 
 void	sa(int *a, int a_len)
@@ -84,15 +99,36 @@ void	pb(int *b, int *a, int *b_len, int a_len)
 
 void	ra(int *a, int a_len)
 {
-	rotate(a, a_len);
-	write(1, "ra\n", 3);
+	if (a_len > 1)
+	{
+		rotate(a, a_len);
+		write(1, "rb\n", 3);
+	}
 }
 
 void	rb(int *b, int b_len)
 {
-	rotate(b, b_len);
-	//we print only when rotation actually happens..
-	//in my func 'rotate' i do rotate even if len is one, we need\
-	//to add an if condition there i guess
+	if (b_len > 1)
+	{
+		rotate(b, b_len);
+		write(1, "rb\n", 3);
+	}
 }
 
+void	rra(int *a, int a_len)
+{
+	if (a_len > 1)
+	{
+		reverse_rotate(a, a_len);
+		write(1, "rra\n", 4);
+	}
+}
+
+void	rrb(int *b, int b_len)
+{
+	if (b_len > 1)
+	{
+		reverse_rotate(b, b_len);
+		write(1, "rrb\n", 4);
+	}
+}
