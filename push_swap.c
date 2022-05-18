@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:30:55 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/17 20:55:28 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/18 14:02:27 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ int main(int c, char **v)
 			system("leaks a.out");
 			exit(1);
 	}*/
-		int arr[5] = {8, 9, 30, 14};
+		int arr[] = {8};
 //	rotate(arr, 4);
-	ft_push(a, arr, &sz.b_len);
+//	ft_push(a, arr, &sz.b_len);
+	sa(arr, 1);
 	printf("arr[0] = %d\n", arr[0]);
-	printf("arr[1] = %d\n", arr[1]);
-	printf("arr[2] = %d\n", arr[2]);
-	printf("arr[3] = %d\n", arr[3]);
-	printf("arr[4444] = %d\n", arr[4]);
+//	printf("arr[1] = %d\n", arr[1]);
+//	printf("arr[2] = %d\n", arr[2]);
+//	printf("arr[3] = %d\n", arr[3]);
+//	printf("arr[4444] = %d\n", arr[4]);
 	printf(" %d\n", sz.b_len);
 }

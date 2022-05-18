@@ -22,7 +22,7 @@ int		check_type(char **str, int i, int *a);
 int		check_valid_args(char *all_args, int **a);
 void	ft_push(int *i, int *j, int *len);
 void	rotate(int *i, int len);
-void	ft_swap(int *i);
-
+void	ft_swap(int *i, int len);
+void	sa(int *i, int len);
 
 #endif
