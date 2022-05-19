@@ -29,5 +29,6 @@ void	rb(int *b, int b_len);
 void	rra(int *a, int a_len);
 void	rrb(int *b, int b_len);
 void	sort_three(int *a, int a_len);
+void	sort_five(int **a, int **b, int *a_len, int *b_len);
 
 #endif

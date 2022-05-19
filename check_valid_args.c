@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:52:10 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/17 16:45:51 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/19 18:45:11 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int	check_valid_args(char *all_args, int **a)
 	}
 	free(arg);
 	free (all_args);
-	return (--i);
+	return (i);
 }
