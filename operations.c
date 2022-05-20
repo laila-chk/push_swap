@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:01:37 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/20 12:00:49 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:47:15 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_swap(int *i, int len)
 	}
 }
 
-void ft_push(int *from, int *to, int *f_len, int *t_len)
+void ft_push(int **from, int **to, int *f_len, int *t_len)
 {
 	int		k;
 	int		l;
@@ -32,18 +32,18 @@ void ft_push(int *from, int *to, int *f_len, int *t_len)
 	l = 0;
 	while (k > 0)
 	{
-		to[k] = to[k - 1];
+		(*to)[k] = (*to)[k - 1];
 		k--;
 	}
-	to[0] = from[0];
-	while (l < *f_len - 1)
+	printf("oh no oh no no nonon");
+	(*to)[0] = (*from)[0];
+/*	while (l < *(f_len) - 1)
 	{
-		printf("entered the zone!--> f_len = %d f_len = %d\n", *t_len, *f_len);
-		from[l] = from[l + 1];
+		*from[l] = *from[l + 1];
 		l++;
 	}
 	(*t_len)++;
-	(*f_len)--;
+	(*f_len)--;*/
 }
 
 void	rotate(int *i, int len)
@@ -88,7 +88,7 @@ void	sb(int *b, int b_len)
 	write(1, "sb\n", 3);
 }
 
-void	pa(int *a, int *b, int *a_len, int *b_len)
+void	pa(int **a, int **b, int *a_len, int *b_len)
 {
 	if (*b_len > 0)
 	{
@@ -97,7 +97,7 @@ void	pa(int *a, int *b, int *a_len, int *b_len)
 	}
 }
 
-void	pb(int *b, int *a, int *b_len, int *a_len)
+void	pb(int **b, int **a, int *b_len, int *a_len)
 {
 	if (*a_len > 0)
 	{
