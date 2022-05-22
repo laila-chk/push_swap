@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:30:55 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/22 12:04:04 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/22 18:23:55 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ int main(int c, char **v)
 			system("leaks a.out");
 			exit(1);
 	}*/
-int i = 0;
+//int i = 0;
 /*	while (i < sz.a_len)
 	{
 		printf("a[%d]=%d  ", i, (a)[i]);
 		i++;
 	}*/
-	while (i < sz.b_len)
+/*	while (i < sz.b_len)
 	{
 		printf("b[%d]=%d  ", i, (b)[i]);
 		i++;
 	}
-
+*/
 }

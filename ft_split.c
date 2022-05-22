@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:06:56 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/17 15:03:26 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/22 20:19:42 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int	wordcount(const char *s, char c)
 	while (s[i])
 	{
 		check = 0;
-		while (s[i] && !ft_strncmp(&s[i], &c, 1))
+		while (s[i] && s[i] == c)
 			i++;
-		while (s[i] && ft_strncmp(&s[i], &c, 1))
+		while (s[i] && s[i] != c)
 		{
 			check = 1;
 			i++;
@@ -69,7 +69,7 @@ static char	**retptr(const char *s, char c, int *j, char **p)
 
 	while (*s)
 	{
-		while (*s && !ft_strncmp(s, &c, 1))
+		while (*s && *s == c)
 			s++;
 		if (!*s)
 			break ;
