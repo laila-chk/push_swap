@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:01:37 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/20 17:47:15 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/21 12:23:01 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,14 @@ void ft_push(int **from, int **to, int *f_len, int *t_len)
 		(*to)[k] = (*to)[k - 1];
 		k--;
 	}
-	printf("oh no oh no no nonon");
 	(*to)[0] = (*from)[0];
-/*	while (l < *(f_len) - 1)
+	while (l < *f_len - 1)
 	{
-		*from[l] = *from[l + 1];
+		(*from)[l] = (*from)[l + 1];
 		l++;
 	}
 	(*t_len)++;
-	(*f_len)--;*/
+	(*f_len)--;
 }
 
 void	rotate(int *i, int len)

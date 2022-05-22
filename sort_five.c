@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:12:50 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/20 17:44:15 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/21 13:37:45 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,40 +49,47 @@ void	sort_five(int **a, int **b, int *a_len, int *b_len)
 {
 	int		i;
 	int		*temp;
+	int		j;
 
+	j = 0;
 	i = 0;
-	b = ft_calloc(*a_len, sizeof(int));
+	*b = ft_calloc(*a_len, sizeof(int));
 	temp = ft_calloc(*a_len, sizeof(int));
 	while (i < *a_len)
 	{
 		temp[i] = (*a)[i];
 		i++;
+
 	}
 	bubble_sort(&temp, *a_len);
-	i = 0;
-	while (i < *a_len)
+	while (*a_len > 3)
 	{
-		if ((*a)[i] == temp[0])
-			break;
-		i++;
-	}
-	printf("**%d**\n", i);
-	if (i <= 1)
-	{
-		while (i--)
-			ra(*a, *a_len);
-	}
-	else
-	{
-		while (*a_len - i)
+		i = 0;
+		while (i < *a_len)
 		{
-			rra(*a, *a_len);
+			if ((*a)[i] == temp[j])
+				break;
 			i++;
 		}
+		if (i <= 1)
+		{
+			while (i--)
+				ra(*a, *a_len);
+		}
+		else
+		{
+			while (*a_len - i)
+			{
+				rra(*a, *a_len);
+				i++;
+			}
+		}
+		pb(b, a, b_len, a_len);
+		j++;
 	}
-	pb(b, a, b_len, a_len);
-//	printf("b len is %d\n", *b_len);
-//	printf("%d- %d- %d- \n", (*a)[0], (*a)[1], (*a)[2]);
-//	printf("%d- %d- %d- \n", (*b)[0], (*b)[1], (*b)[2]);
+	sort_three(*a, *a_len);
+	i = 0;
+	while (*b_len)
+		pa(a, b, a_len, b_len);
 	free(temp);
 }
