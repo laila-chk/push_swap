@@ -10,6 +10,7 @@ typedef struct s_vars
 {
 	int a_len;
 	int	b_len;
+	int	n;
 }	t_vars;
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -29,11 +30,15 @@ void	rb(int *b, int b_len);
 void	rra(int *a, int a_len);
 void	rrb(int *b, int b_len);
 void	sort_three(int *a, int a_len);
-void	sort_five(int **a, int **b, int *a_len, int *b_len);
+void	sort_five(int **a, int **b, t_vars *sz, int *tmp);
 void	doubled_elm(void);
 void	bubble_sort(int **a, int a_len);
-void	ft_sort(int **a, int **b, int *a_len, int *b_len);
-void	sort_alot(int **a, int **b, int *a_len, int *b_len);
+void	ft_sort(int **a, int **b, t_vars *sz, int *tmp);
+void	sort_alot(int **a, int **b, t_vars *sz, int *tmp);
+void	b_to_a(int **a, int **b, t_vars *sz, int *tmp);
+
+
+//void	sort_alot(int **a, int **b, int *a_len, int *b_len);
 
 
 #endif

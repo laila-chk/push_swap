@@ -3,72 +3,116 @@
 /*                                                        :::      ::::::::   */
 /*   sort_alot.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lchokri <lchokri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 17:29:36 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/22 18:57:41 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:44:17 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-	
-//IN CASE we wamted to work with sort_five function, pay attention
-//to the allocation of b. bc the func allocates again
-
-void	sort_alot(int **a, int **b, int *a_len, int *b_len)
+int		find_biggest(int *b, int val, int b_len, int *big)
 {
-	int		*temp;
-	int		i;
-	int		m;
-	int		n;
-	int		w;
+	int	i;
 
-	int a_l = *a_len;
 	i = 0;
-	n = 18;
-	m = (*a_len) / 2;
-	w = (*a_len) / n;
-	int	mw;
-	int m_w;
-	temp = ft_calloc(*a_len, sizeof(int));
-	*b = ft_calloc(*a_len, sizeof(int));
-	printf("^^^ %d^^^\n", *a_len);
-	while (i < *a_len)
+	while (i < b_len)
 	{
-		temp[i] = (*a)[i];
+		if (b[i] == val)
+		{
+			*big = i;
+			return (1);
+		}
 		i++;
 	}
-	i = 0;
-	bubble_sort(&temp, *a_len);
+	return (0);
+}
+
+void	b_to_a(int **a, int **b, t_vars *sz, int *tmp)
+{
+	int		index;
+	int		i;
+	int		tail;
+	int 	big;
+	tail = 0;
+	index = 0;
+	i = sz->b_len - 1;
+	while (sz->b_len)
+	{
+		
+		tail = sz->a_len - 1;
+		if ((find_biggest(*b, tmp[i], sz->b_len, &big)) )
+		{
+			if((*b)[0] == tmp[i])
+			{
+				pa(a, b, &(sz->a_len), &(sz->b_len));
+				i--;
+			}
+			else
+			{
+				if (index == 0 || ((*b)[0] > (*a)[tail] && tail >= 0))
+				{
+					pa(a, b, &(sz->a_len), &(sz->b_len));
+					ra(*a, sz->a_len);
+					index++;
+				}
+				else
+				{
+					if (big < sz->b_len / 2)
+						rb(*b, sz->b_len);
+					else
+						rrb(*b, sz->b_len);
+				}
+			}
+		}
+		else
+		{
+		//	if(sz->a_len != 0 && index != 0)
+		//	{
+				index--;
+				rra(*a, sz->a_len);
+				i--;
+		//	}
+		}
+//		printf("i ===== %d tpm == %d\n ",i, tmp[i]);;
+	}
+}
+
+void	sort_alot(int **a, int **b, t_vars *sz, int *tmp)
+{
+	int		m;
+	int		w;
+	int a_l = sz->a_len;
+	int	mw;
+	int m_w;
+
+	m = (sz->a_len) / 2;
+	w = (sz->a_len) / sz->n;
 	mw = m;
 	m_w = m;
-	while (*a_len)
+	*b = ft_calloc(sz->a_len, sizeof(int));
+	while (sz->a_len)
 	{
 		mw += w;
 		m_w -= w;
-		while (*b_len < mw - m_w)
+		while (sz->b_len < mw - m_w)
 		{
 			if (m_w < 0 )
 				m_w = 0;
 		   	if( mw >= a_l)
 				mw = a_l - 1;
-		//	printf("tmp[m_w:%d]=%d   tmp[mw:%d]=%d & a[0] = %d\n", m_w, (temp)[m_w], mw, temp[mw], (*a)[0]);
-		//  printf("b's--> %d %d %d %d %d %d %d %d \n", (*b)[0], (*b)[1], (*b)[2], (*b)[3], (*b)[4],(*b)[5], (*b)[6], (*b)[7]);
-		//  printf("%d- %d- %d- \n", (*a)[0], (*a)[1], (*a)[2]);	
-		if ((*a)[0] <= temp[mw] && (*a)[0] >= temp[m_w])
-			{
-				pb(b, a, b_len, a_len);
-				if ((*b)[0] >= temp[m_w] && (*b)[0] < temp[m])
-					rb(*b, *b_len);
+			if ((*a)[0] <= tmp[mw] && (*a)[0] >= tmp[m_w])
+			{	
+				pb(b, a, &(sz->b_len), &(sz->a_len));
+				if ((*b)[0] >= tmp[m_w] && (*b)[0] < tmp[m])
+				{
+					rb(*b, sz->b_len);
+				}
 			}
 			else
-					ra(*a, *a_len);
-	//	printf("here\n");
+				ra(*a, sz->a_len);
 		}
-		// printf("alen : %d    blen : %d  m:%d   w:%d  mw: %d m_w: %d \n", *a_len, *b_len, m, w, mw, m_w);
-//		sleep(1);
 	}
-	//i = 0;
-	//printf("\n");
+	b_to_a(a, b, sz, tmp);
 }
