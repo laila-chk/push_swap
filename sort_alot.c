@@ -6,7 +6,7 @@
 /*   By: lchokri <lchokri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 17:29:36 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/25 16:44:17 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/26 09:23:05 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	b_to_a(int **a, int **b, t_vars *sz, int *tmp)
 	int		i;
 	int		tail;
 	int 	big;
+
 	tail = 0;
 	index = 0;
 	i = sz->b_len - 1;
-	while (sz->b_len)
-	{
-		
+	while (sz->b_len || index != 0)
+	{	
 		tail = sz->a_len - 1;
 		if ((find_biggest(*b, tmp[i], sz->b_len, &big)) )
 		{
@@ -49,15 +49,13 @@ void	b_to_a(int **a, int **b, t_vars *sz, int *tmp)
 				pa(a, b, &(sz->a_len), &(sz->b_len));
 				i--;
 			}
-			else
-			{
-				if (index == 0 || ((*b)[0] > (*a)[tail] && tail >= 0))
+			else if (index == 0 || ((*b)[0] > (*a)[tail] && tail >= 0))
 				{
 					pa(a, b, &(sz->a_len), &(sz->b_len));
 					ra(*a, sz->a_len);
 					index++;
 				}
-				else
+			else
 				{
 					if (big < sz->b_len / 2)
 						rb(*b, sz->b_len);
@@ -65,17 +63,15 @@ void	b_to_a(int **a, int **b, t_vars *sz, int *tmp)
 						rrb(*b, sz->b_len);
 				}
 			}
-		}
 		else
 		{
-		//	if(sz->a_len != 0 && index != 0)
-		//	{
+			if(sz->a_len != 0 && index != 0)
+			{
 				index--;
 				rra(*a, sz->a_len);
 				i--;
-		//	}
+			}
 		}
-//		printf("i ===== %d tpm == %d\n ",i, tmp[i]);;
 	}
 }
 
