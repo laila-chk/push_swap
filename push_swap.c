@@ -6,14 +6,43 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:30:55 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/25 14:38:27 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/26 15:58:06 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int main(int c, char **v)
+void	fill_tmp(int *a, int *tmp, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		tmp[i] = a[i];
+		i++;
+	}
+}
+
+void	check_if_sorted(int *a, int *tmp, int len)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (i < len)
+	{
+		if (tmp[i] == a[i])
+			j++;
+		i++;
+	}
+	if (i == j)
+		exit(1);
+}
+
+int	main(int c, char **v)
 {
 	char	*joined_args;
 	int		*a;
@@ -21,8 +50,6 @@ int main(int c, char **v)
 	int		*tmp;
 	t_vars	sz;
 
-int i = 0; //khlito mmnboth 7itach ghan3ml func li kad3amar o dsorti tmp
-			//ghir 3gzt db..
 	a = NULL;
 	b = NULL;
 	tmp = NULL;
@@ -30,31 +57,17 @@ int i = 0; //khlito mmnboth 7itach ghan3ml func li kad3amar o dsorti tmp
 	{
 		sz.b_len = 0;
 		join_all_args(&joined_args, v, c);
-		sz.a_len  = check_valid_args(joined_args, &a);
+		sz.a_len = check_valid_args(joined_args, &a);
 		tmp = ft_calloc(sz.a_len, sizeof(int));
-		while (i < sz.a_len)
-		{
-			tmp[i] = a[i];
-			i++;
-		}
+		fill_tmp(a, tmp, sz.a_len);
 		bubble_sort(&tmp, sz.a_len);
+		check_if_sorted(a, tmp, sz.a_len);
 		ft_sort(&a, &b, &sz, tmp);
 	}
+}
+
 /*	while (1)
 	{
-			system("leaks a.out");
+			system("leaks push_swap");
 			exit(1);
 	}*/
-/* i = 0;
-	while (i < sz.a_len)
-	{
-		printf("a[%d]=%d  ", i, (a)[i]);
-		i++;
-	}
-	while (i < sz.b_len)
-	{
-		printf("b[%d]=%d  ", i, (b)[i]);
-		i++;
-	}
-*/
-}

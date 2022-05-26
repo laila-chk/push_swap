@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 10:19:15 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/17 16:45:34 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/26 11:46:30 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	check_empty_arg(int i, int c, char **p, char **v)
 	int	j;
 
 	j = 0;
-	if (i <= c  && v[i][0] == '\0') 
-		{
-			free(*p);
-			write (2, "Error: empty argument!", 22);
-			exit(EXIT_FAILURE);
-		}
+	if (i <= c && v[i][0] == '\0')
+	{
+		free(*p);
+		write (2, "Error: empty argument!", 22);
+		exit(EXIT_FAILURE);
+	}
 	else if (i <= c && (v[i][j] == 32 || (v[i][j] <= 13 && v[i][j] >= 9)))
 	{
 		while (v[i][j] == 32 || (v[i][j] <= 13 && v[i][j] >= 9))
@@ -58,7 +58,7 @@ void	join_all_args(char **joined_args, char **v, int c)
 	while (i < c)
 	{
 		p = *joined_args;
-		*joined_args = ft_strjoin(*joined_args, v[i]); 
+		*joined_args = ft_strjoin(*joined_args, v[i]);
 		check_empty_arg(i, c, joined_args, v);
 		i++;
 		free(p);

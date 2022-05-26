@@ -6,13 +6,13 @@
 /*   By: lchokri <lchokri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 17:29:36 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 09:23:05 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/26 15:55:42 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		find_biggest(int *b, int val, int b_len, int *big)
+int	find_biggest(int *b, int val, int b_len, int *big)
 {
 	int	i;
 
@@ -29,82 +29,63 @@ int		find_biggest(int *b, int val, int b_len, int *big)
 	return (0);
 }
 
+void	biggest_in_b(int **a, int **b, int *tmp, t_vars *sz)
+{
+	if ((*b)[0] == tmp[sz->i])
+	{
+		pa(a, b, &(sz->a_len), &(sz->b_len));
+		sz->i--;
+	}
+	else if (sz->index == 0 || ((*b)[0]
+		> (*a)[sz->a_len - 1] && sz->a_len - 1 >= 0))
+	{
+		pa(a, b, &(sz->a_len), &(sz->b_len));
+		ra(*a, sz->a_len);
+		sz->index++;
+	}
+	else if (sz->big < sz->b_len / 2)
+		rb(*b, sz->b_len);
+	else if (sz->big >= sz->b_len / 2)
+		rrb(*b, sz->b_len);
+}
+
 void	b_to_a(int **a, int **b, t_vars *sz, int *tmp)
 {
-	int		index;
-	int		i;
-	int		tail;
-	int 	big;
-
-	tail = 0;
-	index = 0;
-	i = sz->b_len - 1;
-	while (sz->b_len || index != 0)
+	sz->index = 0;
+	sz->i = sz->b_len - 1;
+	while (sz->b_len || sz->index != 0)
 	{	
-		tail = sz->a_len - 1;
-		if ((find_biggest(*b, tmp[i], sz->b_len, &big)) )
-		{
-			if((*b)[0] == tmp[i])
-			{
-				pa(a, b, &(sz->a_len), &(sz->b_len));
-				i--;
-			}
-			else if (index == 0 || ((*b)[0] > (*a)[tail] && tail >= 0))
-				{
-					pa(a, b, &(sz->a_len), &(sz->b_len));
-					ra(*a, sz->a_len);
-					index++;
-				}
-			else
-				{
-					if (big < sz->b_len / 2)
-						rb(*b, sz->b_len);
-					else
-						rrb(*b, sz->b_len);
-				}
-			}
+		if ((find_biggest(*b, tmp[sz->i], sz->b_len, &(sz->big))))
+			biggest_in_b(a, b, tmp, (sz));
 		else
 		{
-			if(sz->a_len != 0 && index != 0)
-			{
-				index--;
-				rra(*a, sz->a_len);
-				i--;
-			}
+			sz->index--;
+			rra(*a, sz->a_len);
+			sz->i--;
 		}
 	}
 }
 
 void	sort_alot(int **a, int **b, t_vars *sz, int *tmp)
 {
-	int		m;
-	int		w;
-	int a_l = sz->a_len;
-	int	mw;
-	int m_w;
-
-	m = (sz->a_len) / 2;
-	w = (sz->a_len) / sz->n;
-	mw = m;
-	m_w = m;
+	sz->mw = sz->m;
+	sz->m_w = sz->m;
 	*b = ft_calloc(sz->a_len, sizeof(int));
 	while (sz->a_len)
 	{
-		mw += w;
-		m_w -= w;
-		while (sz->b_len < mw - m_w)
+		sz->mw += sz->w;
+		sz->m_w -= sz->w;
+		while (sz->b_len < sz->mw - sz->m_w)
 		{
-			if (m_w < 0 )
-				m_w = 0;
-		   	if( mw >= a_l)
-				mw = a_l - 1;
-			if ((*a)[0] <= tmp[mw] && (*a)[0] >= tmp[m_w])
+			if (sz->m_w < 0 )
+				sz->m_w = 0;
+			if (sz->mw >= sz->a_l)
+				sz->mw = sz->a_l - 1;
+			if ((*a)[0] <= tmp[sz->mw] && (*a)[0] >= tmp[sz->m_w])
 			{	
 				pb(b, a, &(sz->b_len), &(sz->a_len));
-				if ((*b)[0] >= tmp[m_w] && (*b)[0] < tmp[m])
-				{
+				if ((*b)[0] >= tmp[sz->m_w] && (*b)[0] < tmp[sz->m])
 					rb(*b, sz->b_len);
-				}
 			}
 			else
 				ra(*a, sz->a_len);

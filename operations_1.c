@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:01:37 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 09:00:28 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/26 12:19:26 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_swap(int *i, int len)
 {
-	int k;
+	int	k;
+
 	k = i[0];
 	if (len > 1)
 	{
@@ -23,7 +24,7 @@ void	ft_swap(int *i, int len)
 	}
 }
 
-void ft_push(int **from, int **to, int *f_len, int *t_len)
+void	ft_push(int **from, int **to, int *f_len, int *t_len)
 {
 	int		k;
 	int		l;
@@ -52,7 +53,7 @@ void	rotate(int *i, int len)
 
 	j = 0;
 	k = i[0];
-	while(j < len - 1)
+	while (j < len - 1)
 	{
 		i[j] = i[j + 1];
 		j++;
@@ -74,7 +75,7 @@ void	reverse_rotate(int *i, int len)
 	}
 	i[0] = k;
 }
-
+/*
 void	sa(int *a, int a_len)
 {
 	ft_swap(a, a_len);
@@ -139,4 +140,4 @@ void	rrb(int *b, int b_len)
 		reverse_rotate(b, b_len);
 		write(1, "rrb\n", 4);
 	}
-}
+}*/

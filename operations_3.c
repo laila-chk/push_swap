@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*   operations_3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 17:02:36 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 11:44:22 by lchokri          ###   ########.fr       */
+/*   Created: 2022/05/26 12:19:32 by lchokri           #+#    #+#             */
+/*   Updated: 2022/05/26 12:20:14 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort(int **a, int **b, t_vars *sz, int *tmp)
+void	sa(int *a, int a_len)
 {
-	if (sz->a_len <= 3)
-		sort_three(*a, sz->a_len);
-	else if (sz->a_len > 3 && sz->a_len <= 5)
-		sort_five(a, b, sz, tmp);
-	else if (sz->a_len > 5)
+	ft_swap(a, a_len);
+	write(1, "sa\n", 3);
+}
+
+void	sb(int *b, int b_len)
+{
+	ft_swap(b, b_len);
+	write(1, "sb\n", 3);
+}
+
+void	pa(int **a, int **b, int *a_len, int *b_len)
+{
+	if (*b_len > 0)
 	{
-		sz->n = 8;
-		sz->m = (sz->a_len) / 2;
-		sz->w = (sz->a_len) / (sz->n);
-		sz->a_l = (sz->a_len);
-		sort_alot(a, b, sz, tmp);
+		ft_push(b, a, b_len, a_len);
+		write(1, "pa\n", 3);
 	}
 }
