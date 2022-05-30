@@ -61,6 +61,9 @@ void	join_all_args(char **joined_args, char **v, int c)
 		*joined_args = ft_strjoin(*joined_args, v[i]);
 		check_empty_arg(i, c, joined_args, v);
 		i++;
+		/*I guess.. here we should free before calling check_em..
+		 * bECAUse.. it frees what we passed to it, so prev ptr (p)
+		 * will remaine leaking there wa9ila*/
 		free(p);
 	}
 }
