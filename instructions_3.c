@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   instructions_3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 11:44:35 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/31 18:38:53 by lchokri          ###   ########.fr       */
+/*   Created: 2022/05/31 18:32:25 by lchokri           #+#    #+#             */
+/*   Updated: 2022/05/31 18:32:31 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-size_t	ft_strlen(const char *s)
+void	ins_sa(int *a, int a_len)
 {
-	size_t	i;
+	ft_swap(a, a_len);
+}
 
-	i = 0;
-	while (s[i] != '\0' )
-		i++;
-	return (i);
+void	ins_sb(int *b, int b_len)
+{
+	ft_swap(b, b_len);
+}
+
+void	ins_pa(int **a, int **b, int *a_len, int *b_len)
+{
+	if (*b_len > 0)
+		ft_push(b, a, b_len, a_len);
 }

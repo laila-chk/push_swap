@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 10:19:15 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 11:46:30 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/31 18:47:16 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_empty_arg(int i, int c, char **p, char **v)
 	if (i <= c && v[i][0] == '\0')
 	{
 		free(*p);
-		write (2, "Error: empty argument!", 22);
+		write (2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
 	else if (i <= c && (v[i][j] == 32 || (v[i][j] <= 13 && v[i][j] >= 9)))
@@ -31,7 +31,7 @@ void	check_empty_arg(int i, int c, char **p, char **v)
 			if (v[i][j] == '\0')
 			{
 				free(*p);
-				write (2, "Error: argument holds only white spaces", 39);
+				write (2, "Error\n", 6);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -61,9 +61,6 @@ void	join_all_args(char **joined_args, char **v, int c)
 		*joined_args = ft_strjoin(*joined_args, v[i]);
 		check_empty_arg(i, c, joined_args, v);
 		i++;
-		/*I guess.. here we should free before calling check_em..
-		 * bECAUse.. it frees what we passed to it, so prev ptr (p)
-		 * will remaine leaking there wa9ila*/
 		free(p);
 	}
 }

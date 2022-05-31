@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 22:46:39 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/19 16:12:23 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:59:06 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	doubled_elm(void)
 {
-	write(2, "Error: element is dooubled!\n", 29);
+	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
 

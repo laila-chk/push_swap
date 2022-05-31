@@ -6,7 +6,7 @@
 /*   By: lchokri <lchokri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 17:29:36 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 15:55:42 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/31 18:34:36 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	sort_alot(int **a, int **b, t_vars *sz, int *tmp)
 		sz->m_w -= sz->w;
 		while (sz->b_len < sz->mw - sz->m_w)
 		{
-			if (sz->m_w < 0 )
+			if (sz->m_w < 0)
 				sz->m_w = 0;
 			if (sz->mw >= sz->a_l)
 				sz->mw = sz->a_l - 1;

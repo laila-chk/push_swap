@@ -6,12 +6,12 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 09:42:18 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 12:39:06 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/31 18:33:46 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-# define	PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdlib.h>

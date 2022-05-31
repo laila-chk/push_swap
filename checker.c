@@ -1,37 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/31 15:04:59 by lchokri           #+#    #+#             */
+/*   Updated: 2022/05/31 19:07:38 by lchokri          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
-void	checker()
-{}
-
-int	main(int ac, char **av)
+void	fill_tmp(int *a, int *tmp, int len)
 {
-	char	*s;
-	char	**moves;
 	int	i;
-	int	*a;
 
 	i = 0;
-	if (ac > 1)
+	while (i < len)
 	{
-		while (1)
-		{
-			while (av[i] != '\n')
-			{//in join all we should put \n instead of \0 in while
-				join_all_args();
-				sz.a_len = check_valid_args();
-				tmp = ft_calloc(sz.a_len, sizeof(int));
-				fill_tmp(a, tmp, sz.a_len);
-				bubble_sort(&tmp, sz.a_len);
-				i += sz.a_len - 1;
-	
-			}
+		tmp[i] = a[i];
+		i++;
+	}
+}
 
-			s = get_next_line(0);
-			if (s == '\0')
-				break;
-			(*move)[i] = s;
+void	get_instruction(t_vars vr, int *arr, int *b)
+{
+	while (1)
+	{
+		vr.s = get_next_line(0);
+		if (vr.s == NULL)
+		{
+			free(vr.s);
+			break ;
+		}
+		check_instruction(&vr, arr, b);
+		free(vr.s);
+	}
+}
+
+void	examine_intructions(t_vars vr, int *arr)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (vr.len == vr.a_len)
+	{
+		while (i < vr.len)
+		{
+			if (arr[i] == vr.a[i])
+				j++;
 			i++;
+		}
+		if (j == i)
+		{
+			write(1, "OK!\n", 3);
+			exit(EXIT_SUCCESS);
 		}
 	}
 }
 
+int	main(int ac, char **av)
+{
+	int		*b;
+	int		*arranged;
+	t_vars	vr;
+
+	arranged = NULL;
+	b = NULL;
+	if (ac > 1)
+	{
+		arranged = NULL;
+		manage_nums(&vr, ac, av);
+		b = malloc(vr.len * sizeof(int));
+		arranged = malloc(vr.a_len * sizeof(int));
+		fill_tmp(vr.a, arranged, vr.a_len);
+		bubble_sort(&arranged, vr.a_len);
+		get_instruction(vr, arranged, b);
+		examine_intructions(vr, arranged);
+		write(1, "KO\n", 3);
+	}
+	free(arranged);
+	free(b);
+}
