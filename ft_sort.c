@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 17:02:36 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 16:31:59 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/05/31 20:50:26 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ void	ft_sort(int **a, int **b, t_vars *sz, int *tmp)
 		sort_five(a, b, sz, tmp);
 	else if (sz->a_len > 5)
 	{
-		sz->n = 8;
+		if (sz->a_len > 5 && sz->a_len < 50)
+			sz->n = 4;
+		else if (sz->a_len >= 50 && sz->a_len < 150)
+			sz->n = 8;
+		else if (sz->a_len >= 150)
+			sz->n = 20;
 		sz->m = (sz->a_len) / 2;
 		sz->w = (sz->a_len) / (sz->n);
 		sz->a_l = (sz->a_len);
 		sort_alot(a, b, sz, tmp);
 	}
 }
-// ranges: 5-50 | 50-150 
