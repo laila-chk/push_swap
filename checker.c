@@ -6,7 +6,7 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:04:59 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/31 19:07:38 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/06/01 15:13:37 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	examine_intructions(t_vars vr, int *arr)
 		}
 		if (j == i)
 		{
-			write(1, "OK!\n", 3);
+			write(1, "OK\n", 3);
 			exit(EXIT_SUCCESS);
 		}
 	}

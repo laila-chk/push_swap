@@ -6,12 +6,11 @@
 /*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:30:55 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 15:58:06 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/06/01 16:49:23 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	fill_tmp(int *a, int *tmp, int len)
 {
@@ -65,9 +64,3 @@ int	main(int c, char **v)
 		ft_sort(&a, &b, &sz, tmp);
 	}
 }
-
-/*	while (1)
-	{
-			system("leaks push_swap");
-			exit(1);
-	}*/

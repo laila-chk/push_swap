@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lchokri <lchokri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:02:40 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/31 19:03:02 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/06/01 15:05:09 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,25 @@ void	manage_nums(t_vars *vr, int ac, char **av)
 	join_all_args(&(vr->nums), av, ac);
 	vr->a_len = check_valid_args(vr->nums, &(vr->a));
 	vr->len = vr->a_len;
+}
+
+void	check_intr_2(t_vars *vr, int *arr, int *b)
+{
+	if (vr->s[2] == 'a')
+		ins_rra(vr->a, vr->a_len);
+	else if (vr->s[2] == 'b')
+		ins_rrb(b, vr->b_len);
+	else if (vr->s[2] == 'r')
+	{
+		ins_rra(vr->a, vr->a_len);
+		ins_rrb(b, vr->b_len);
+	}
+	else
+	{
+		free(arr);
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
 }
 
 void	check_instruction(t_vars *vr, int *arr, int *b)
@@ -33,13 +52,13 @@ void	check_instruction(t_vars *vr, int *arr, int *b)
 		ins_ra(vr->a, vr->a_len);
 	else if (vr->s[0] == 'r' && vr->s[1] == 'b' && vr->s[2] == '\n')
 		ins_rb(b, vr->b_len);
-	else if (vr->s[0] == 'r' && vr->s[1] == 'r' && vr->s[3] == '\n')
+	else if (vr->s[0] == 'r' && vr->s[1] == 'r' && vr->s[2] == '\n')
 	{
-		if (vr->s[2] == 'a')
-			ins_rra(vr->a, vr->a_len);
-		else if (vr->s[2] == 'b')
-			ins_rrb(b, vr->b_len);
+		ins_ra(vr->a, vr->a_len);
+		ins_rb(b, vr->b_len);
 	}
+	else if (vr->s[0] == 'r' && vr->s[1] == 'r' && vr->s[3] == '\n')
+		check_intr_2(vr, arr, b);
 	else
 	{
 		free(arr);

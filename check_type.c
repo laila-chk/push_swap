@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_type.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lchokri <lchokri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 20:23:38 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 15:58:01 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/06/01 16:44:29 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	check_if_valid(char **str, int i, int j, unsigned long *res)
 			exit(EXIT_FAILURE);
 		}
 	}
+	if (*res > 2147483647)
+	{
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
 }
 
 int	check_type(char **str, int i)
@@ -47,6 +52,13 @@ int	check_type(char **str, int i)
 		if (str[i][j] == '-')
 			sign *= -1;
 		j++;
+		if (str[i][j] == '\0')
+		{
+			write(2, "Error\n", 6);
+			free((str)[i]);
+			free(str);
+			exit(EXIT_FAILURE);
+		}
 	}
 	check_if_valid(str, i, j, &res);
 	return (sign * res);

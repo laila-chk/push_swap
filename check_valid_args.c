@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_args.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchokri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lchokri <lchokri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:52:10 by lchokri           #+#    #+#             */
-/*   Updated: 2022/05/26 13:53:46 by lchokri          ###   ########.fr       */
+/*   Updated: 2022/06/01 14:53:18 by lchokri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//return # of #s
 
 int	check_valid_args(char *all_args, int **a)
 {
